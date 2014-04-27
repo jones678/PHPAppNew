@@ -83,6 +83,11 @@
 			}
 			
 		}
+		
+		public function lastInsert()
+		{
+			return $this->mysqli->insert_id;
+		}
 			
 		//function to upddate a record
 		public function update($table, $field, $where)
