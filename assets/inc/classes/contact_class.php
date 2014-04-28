@@ -206,6 +206,24 @@
 					//		} 
 					 
 		}
+	/*
+	 * uploadFiles function accepts two parameters. The first parameter
+	 * is the destination directory that the file is to reside in.
+	 * If this directory does not exists, it will be created.
+	 * The second parameter is the name given to the 
+	 * input that will pass the file name.
+	 */
+	function uploadFiles($destinationDir, $inputName){
+		 //$dir = $destinationDir;
+ 			// create new directory with 744 permissions if it does not exist yet
+			// owner will be the user/group the PHP script is run under
+			if (!file_exists($destinationDir)) {
+				mkdir($destinationDir, 0744);
+			}
+			if(move_uploaded_file($_FILES[$inputName]['tmp_name'], $destinationDir."/{$_FILES[$inputName] ['name']}")){
+				echo"upload successful!";
+			}
+	}// end uploadFiles function
 	
 		//deconstructor function
 		public function __destruct()
